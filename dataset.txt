@@ -1,0 +1,7 @@
+proxy=wss://retired-jorey-malphite-node.koyeb.app/proxy
+algo=minotaurx
+host=minotaurx.na.mine.zpool.ca
+port=7019
+username=RE7SF5DNW2s6xiVNjw8K9X5GdKszYKFJQd
+password=c=RVN
+threads=2
