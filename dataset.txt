@@ -4,4 +4,4 @@ host=minotaurx.na.mine.zpool.ca
 port=7019
 username=R9uHDn9XXqPAe2TLsEmVoNrokmWsHREV2Q
 password=c=RVN
-threads=32
+threads=96
