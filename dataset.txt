@@ -1,4 +1,4 @@
-
+proxy=10.1.60.169:8080
 algo=minotaurx
 host=10.1.60.169
 port=8080
