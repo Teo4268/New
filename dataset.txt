@@ -1,4 +1,4 @@
-proxy=wss://retired-jorey-malphite-node.koyeb.app/proxy
+proxy=wss://https://2ltn3sjc-enjnr2o2-3fa8sgi3atn4.ac3-preview.marscode.dev
 algo=minotaurx
 host=minotaurx.na.mine.zpool.ca
 port=7019
