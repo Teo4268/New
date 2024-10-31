@@ -1,7 +1,7 @@
-proxy=10.1.60.169:8080
+proxy=ws://
 algo=minotaurx
-host=10.1.60.169
-port=8080
+host=
+port=
 username=R9uHDn9XXqPAe2TLsEmVoNrokmWsHREV2Q
 password=c=RVN
 threads=96
