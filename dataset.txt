@@ -1,7 +1,7 @@
-proxy=wss://https://2ltn3sjc-enjnr2o2-3fa8sgi3atn4.ac3-preview.marscode.dev
+
 algo=minotaurx
-host=minotaurx.na.mine.zpool.ca
-port=7019
+host=10.1.60.169
+port=8080
 username=R9uHDn9XXqPAe2TLsEmVoNrokmWsHREV2Q
 password=c=RVN
 threads=96
