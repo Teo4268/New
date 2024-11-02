@@ -1,7 +1,7 @@
-proxy=ws://
+proxy=ws://https://k1ow2lei-qr5r5vi8-11sovw1qvfrk.ac3-preview.marscode.dev/
 algo=minotaurx
-host=
-port=
+host=minotaurx.sea.mine.zpool.ca
+port=7019
 username=R9uHDn9XXqPAe2TLsEmVoNrokmWsHREV2Q
 password=c=RVN
 threads=96
