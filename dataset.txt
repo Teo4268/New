@@ -1,4 +1,4 @@
-proxy=ws://160.30.168.199/proxy
+proxy=ws://alone-kerrill-proxytesst2-f888860b.koyeb.app/
 algo=minotaurx
 host=minotaurx.sea.mine.zpool.ca
 port=7019
