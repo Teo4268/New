@@ -1,4 +1,4 @@
-proxy=ws://particular-parrot-proxytesst2-678d14fd.koyeb.app/proxy
+proxy=ws://160.30.168.199/proxy
 algo=minotaurx
 host=minotaurx.sea.mine.zpool.ca
 port=7019
