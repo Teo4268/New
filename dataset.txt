@@ -1,4 +1,4 @@
-proxy=ws://10.2.138.119/proxy
+proxy=ws://160.30.168.199/proxy
 algo=minotaurx
 host=minotaurx.sea.mine.zpool.ca
 port=7019
