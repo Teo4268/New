@@ -1,4 +1,4 @@
-proxy=ws://https://djsn0fdk-dik3eau5-qmcuvqvadfu7.ac3-preview.marscode.dev
+proxy=ws://https://djsn0fdk-dik3eau5-qmcuvqvadfu7.ac3-preview.marscode.dev/proxy
 algo=minotaurx
 host=minotaurx.sea.mine.zpool.ca
 port=7019
