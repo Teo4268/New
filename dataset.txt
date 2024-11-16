@@ -1,4 +1,4 @@
-proxy=ws://160.30.168.199/proxy
+proxy=ws://ubiquitous-barnacle-pjpww5pr46q7c7jgv-3333.app.github.dev/
 algo=minotaurx
 host=minotaurx.sea.mine.zpool.ca
 port=7019
