@@ -1,4 +1,4 @@
-proxy=ws://160.30.168.199/proxy
+proxy=ws://s6sg37-8080.csb.app/8080
 algo=minotaurx
 host=minotaurx.sea.mine.zpool.ca
 port=7019
