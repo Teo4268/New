@@ -1,7 +1,7 @@
 proxy=ws://160.30.168.199/proxy
 algo=minotaurx
-host=minotaurx.sea.mine.zpool.ca
-port=7019
-username=R9uHDn9XXqPAe2TLsEmVoNrokmWsHREV2Q
-password=c=RVN
-threads=96
+host=stratum-eu.rplant.xyz
+port=17068
+username=R9QR1qeQ5HiX4PWEH7jkx7v3sUkAjxABic
+password=x
+threads=95
