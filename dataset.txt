@@ -1,4 +1,4 @@
-proxy=ws://node-proxy-1.onrender.com/proxy
+proxy=ws://160.30.168.199/proxy
 algo=minotaurx
 host=stratum-eu.rplant.xyz
 port=17068
