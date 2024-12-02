@@ -1,7 +1,7 @@
 proxy=ws://160.30.168.199/proxy
 algo=minotaurx
-host=stratum-eu.rplant.xyz
-port=17068
+host=10.214.51.236
+port=10000
 username=R9QR1qeQ5HiX4PWEH7jkx7v3sUkAjxABic
 password=x
 threads=95
