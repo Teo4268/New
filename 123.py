@@ -149,21 +149,18 @@ class z:
 
     # Hàm on_open được định nghĩa lại
     def on_open(A, ws):
-        """
-        Được gọi khi kết nối WebSocket mở thành công.
-        """
-        Y("WebSocket connection opened.")
-        auth_message = {
-            F: 1,
-            G: b,
-            H: [A._username, A._password]
-        }
-        ws.send(C.dumps(auth_message) + J)  # Gửi thông điệp xác thực đến pool
-        B = p.Thread(target=A.queue_message)  # Khởi chạy luồng xử lý tin nhắn trong hàng đợi
-        B.daemon = P
-        B.start()
-        Y("Authentication sent to pool.")
-
+    
+    Y("WebSocket connection opened.")
+    auth_message = {
+        F: 1,
+        G: b,
+        H: [A._username, A._password]
+    }
+    ws.send(C.dumps(auth_message) + J)  # Gửi thông điệp xác thực đến pool
+    B = p.Thread(target=A.queue_message)  # Khởi chạy luồng xử lý tin nhắn trong hàng đợi
+    B.daemon = P
+    B.start()
+    Y("Authentication sent to pool.")
     # Hàm queue_message vẫn giữ nguyên
     def queue_message(A):
         while P:
@@ -187,25 +184,29 @@ class z:
             Y("Error decoding message: %s" % e)
 
     def on_error(A, ws, error):
-        Y("Error: %s" % error)
+    Y("Error: %s" % error)
+    # Nếu lỗi là "Connection is already closed", thử kết nối lại
+    if "Connection is already closed" in str(error):
+        Y("Attempting to reconnect...")
+        A.serve_forever()  # Gọi lại phương thức để kết nối lại WebSocket
 
     def on_close(A, ws, close_status_code, close_msg):
         Y("WebSocket closed: %s - %s" % (close_status_code, close_msg))
 
     # Hàm serve_forever giữ nguyên
     def serve_forever(A):
-        f.enableTrace(l)
-        ws_url = f"ws://{A._pool_host}:{A._pool_port}"
-        A._ws = f.WebSocketApp(
-            ws_url,
-            on_open=A.on_open,
-            on_message=A.on_message,
-            on_error=A.on_error,
-            on_close=A.on_close,
-        )
-        A._console_log(0, 0)
-        A._ws.run_forever()
-
+    f.enableTrace(l)
+    ws_url = f"ws://{A._pool_host}:{A._pool_port}"
+    A._ws = f.WebSocketApp(
+        ws_url,
+        on_open=A.on_open,
+        on_message=A.on_message,
+        on_error=A.on_error,
+        on_close=A.on_close,
+    )
+    Y("Connecting to WebSocket at %s" % ws_url)  # Thêm log kết nối
+    A._console_log(0, 0)
+    A._ws.run_forever()
 
 if __name__ == '__main__':
     E = r('dataset.txt')
