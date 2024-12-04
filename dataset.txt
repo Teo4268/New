@@ -1,7 +1,6 @@
-proxy=ws://q5kwfp-3333.csb.app
-algo=minotaurx
+
 host=stratum-na.rplant.xyz
-port=17068
+port=7068
 username=R9QR1qeQ5HiX4PWEH7jkx7v3sUkAjxABic
 password=x
-threads=95
+threads=2
