@@ -138,9 +138,13 @@ class z:
 
       # Định nghĩa lại _console_log
     def _console_log(A, hashrate, shared):
+        
         @property
+        
     def threads(self):
+        
     return self._threads
+
         """
         Hiển thị thông tin khai thác trên console.
         """
