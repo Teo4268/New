@@ -149,22 +149,14 @@ class z:
         Y('WORK: %s | NUMBER: %d | RESULT: %d | SPEED: %s' % (A._current_job_id, A._threads, shared, t(hashrate)))
 
     def on_open(A, ws):
-    Y("WebSocket connection opened.")
-    # Gửi thông điệp 'mining.subscribe'
-    auth_message = {
-        'method': 'mining.subscribe',
-        'params': [],
-        'id': 1
-    }
-    ws.send(C.dumps(auth_message))
-
-def on_message(A, ws, message):
-    Y("Received message: %s" % message)
-    data = C.loads(message)
-    if data['method'] == 'mining.notify':
-        A._current_job_id = data['params'][0]
-        # Xử lý công việc từ pool
-        A._queue.put(data)
+        Y("WebSocket connection opened.")
+        # Gửi thông điệp 'mining.subscribe'
+        auth_message = {
+            'method': 'mining.subscribe',
+            'params': [],
+            'id': 1
+        }
+        ws.send(C.dumps(auth_message))
 
     def on_message(A, ws, message):
         Y(f"Received message from pool: {message}")
