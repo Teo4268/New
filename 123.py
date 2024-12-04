@@ -115,6 +115,7 @@ y = {T: w}
 
 
 class z:
+    # Các hàm khởi tạo vẫn giữ nguyên
     def __init__(A, pool_host, pool_port, username, password, threads=4, algorithm=T):
         C = threads
         A._pool_host = pool_host
@@ -135,44 +136,37 @@ class z:
         A._hashrates = []
         A._current_job_id = 'N/A'
 
-    def _set_threads(A):
-        if A._threads_range is not B:
-            A._threads = e.randint(A._threads_range[0], A._threads_range[1])
+    # Định nghĩa hàm on_message
+    def on_message(A, ws, message):
+        Y("Received message from pool: %s" % message)
+        try:
+            data = C.loads(message)
+            if data.get(G) == "mining.notify":
+                A._current_job_id = data[H][0]
+                # Xử lý công việc từ pool
+                A._queue.put(data)
+        except C.JSONDecodeError as e:
+            Y("Error decoding message: %s" % e)
 
-    def _console_log(A, hashrate, shared):
-        os.system('clear')
-        Y('WORK: %s | NUMBER: %d | RESULT: %d | SPEED: %s' % (A._current_job_id, A.threads, shared, t(hashrate)))
+    # Định nghĩa hàm on_error
+    def on_error(A, ws, error):
+        Y("Error: %s" % error)
 
-    def _cleanup(A):
-        A._queue.empty()
-        for C in A._job:
-            C.stop()
-        for B in A._processes:
-            B.terminate()
-            B.join()
-        A._processes = []
-        A._job = []
+    # Định nghĩa hàm on_close
+    def on_close(A, ws, close_status_code, close_msg):
+        Y("WebSocket closed: %s - %s" % (close_status_code, close_msg))
 
-    def queue_message(A):
-        while P:
-            if not A._queue.empty():
-                B = A._queue.get()
-                A._accepted_hash = B[o]
-                A._ws.send(B[n])
-            else:
-                K.sleep(.25)
-
-    def on_open(A, ws):
-        I = {F: b, G: b, H: ['teodaocoin']}
-        ws.send(C.dumps(I) + J)
-        B = p.Thread(target=A.queue_message)
-        B.daemon = P
-        B.start()
-
+    # Hàm serve_forever sửa lại
     def serve_forever(A):
         f.enableTrace(l)
         ws_url = f"ws://{A._pool_host}:{A._pool_port}"
-        A._ws = f.WebSocketApp(ws_url, on_open=A.on_open, on_message=A.handle_message)
+        A._ws = f.WebSocketApp(
+            ws_url,
+            on_open=A.on_open,
+            on_message=A.on_message,  # Thay handle_message bằng on_message
+            on_error=A.on_error,
+            on_close=A.on_close,
+        )
         A._console_log(0, 0)
         A._ws.run_forever()
 
