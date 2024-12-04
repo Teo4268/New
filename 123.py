@@ -138,18 +138,14 @@ class z:
 
       # Định nghĩa lại _console_log
     def _console_log(A, hashrate, shared):
+        @property
+    def threads(self):
+    return self._threads
         """
         Hiển thị thông tin khai thác trên console.
         """
         os.system('clear')  # Xóa màn hình console
         Y('WORK: %s | NUMBER: %d | RESULT: %d | SPEED: %s' % (A._current_job_id, A.threads, shared, t(hashrate)))
-
-    
-    
-    @property
-def threads(self):
-    return self._threads
-    
     # Hàm on_open được định nghĩa lại
     def on_open(A, ws):
         """
