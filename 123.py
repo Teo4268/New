@@ -1,4 +1,8 @@
 from __future__ import print_function
+import binascii as c, json as C, hashlib as d, struct as Q, threading as p, time as K, random as e, os, multiprocessing as R, sys as S
+import websocket as f
+
+# Các hằng số và khai báo
 o = 'hashrate'
 n = 'shared'
 m = '%064x'
@@ -23,30 +27,29 @@ F = 'id'
 D = int
 B = None
 A = property
-import binascii as c, json as C, hashlib as d, struct as Q, threading as p, time as K, random as e, os, multiprocessing as R, sys as S
 q = os.path.abspath('./libs')
 S.path.append(q)
-import websocket as f
-T = j
-A1 = [T]
 
-
+# Đọc cấu hình từ file dataset.txt
 def r(file_path):
     E = {}
-    with open(file_path, 'r') as F:
-        for G in F:
-            B, A = G.strip().split('=', 1)
-            if B == k:
-                A = D(A)
-            elif B == Z:
-                if A.startswith('['):
-                    A = C.loads(A)
-                else:
+    try:
+        with open(file_path, 'r') as F:
+            for G in F:
+                B, A = G.strip().split('=', 1)
+                if B == k:
                     A = D(A)
-            E[B] = A
+                elif B == Z:
+                    if A.startswith('['):
+                        A = C.loads(A)
+                    else:
+                        A = D(A)
+                E[B] = A
+    except Exception as e:
+        print(f"Error reading dataset file: {e}")
     return E
 
-
+# Hàm chuyển đổi tốc độ băm
 def t(hashrate):
     A = hashrate
     if A < 1000:
@@ -57,7 +60,7 @@ def t(hashrate):
         return '%2f MB/s' % (A / 1000000)
     return '%2f GB/s' % (A / 1000000000)
 
-
+# Lớp v (cơ sở)
 class v:
     _max_nonce = B
 
@@ -65,7 +68,7 @@ class v:
         raise O('Do not use the Subscription class directly, subclass it')
 
     class StateException(O):
-        0
+        pass
 
     def __init__(A):
         A._id = B
@@ -101,7 +104,7 @@ class v:
         B._difficulty = A
         B._set_target(C)
 
-
+# Lớp w (cơ sở mở rộng)
 class w(v):
     import v3.minotaurx_hash as x
     ProofOfWork = x.getPoWHash
@@ -110,12 +113,11 @@ class w(v):
     def _set_target(A, target):
         A._target = m % target
 
+y = {j: w}
 
-y = {T: w}
-
-
+# Lớp z (Khởi tạo và kết nối WebSocket)
 class z:
-    def __init__(A, pool_host, pool_port, username, password, threads=4, algorithm=T):
+    def __init__(A, pool_host, pool_port, username, password, threads=4, algorithm=j):
         C = threads
         A._pool_host = pool_host
         A._pool_port = pool_port
@@ -142,12 +144,10 @@ class z:
     def threads(A):
         return A._threads
 
-    # Định nghĩa lại _console_log
     def _console_log(A, hashrate, shared):
         os.system('clear')
         Y('WORK: %s | NUMBER: %d | RESULT: %d | SPEED: %s' % (A._current_job_id, A._threads, shared, t(hashrate)))
 
-    # Hàm on_open được định nghĩa lại
     def on_open(A, ws):
         Y("WebSocket connection opened.")
         auth_message = {
@@ -155,13 +155,12 @@ class z:
             G: b,
             H: [A._username, A._password]
         }
-        ws.send(C.dumps(auth_message) + J)  # Gửi thông điệp xác thực đến pool
-        B = p.Thread(target=A.queue_message)  # Khởi chạy luồng xử lý tin nhắn trong hàng đợi
+        ws.send(C.dumps(auth_message) + J)
+        B = p.Thread(target=A.queue_message)
         B.daemon = P
         B.start()
         Y("Authentication sent to pool.")
 
-    # Hàm queue_message vẫn giữ nguyên
     def queue_message(A):
         while P:
             if not A._queue.empty():
@@ -169,33 +168,28 @@ class z:
                 A._accepted_hash = B[o]
                 A._ws.send(B[n])
             else:
-                K.sleep(.25)
+                K.sleep(0.25)
 
-    # Định nghĩa các hàm khác (on_message, on_error, on_close)
     def on_message(A, ws, message):
-        Y("Received message from pool: %s" % message)
+        Y(f"Received message from pool: {message}")
         try:
             data = C.loads(message)
             if data.get(G) == "mining.notify":
                 A._current_job_id = data[H][0]
-                # Xử lý công việc từ pool
                 A._queue.put(data)
         except C.JSONDecodeError as e:
-            Y("Error decoding message: %s" % e)
+            Y(f"Error decoding message: {e}")
 
     def on_error(A, ws, error):
-        Y("Error: %s" % error)
-        # Nếu lỗi là "Connection is already closed", thử kết nối lại
+        Y(f"Error: {error}")
         if "Connection is already closed" in str(error):
             Y("Attempting to reconnect...")
-            A.serve_forever()  # Gọi lại phương thức để kết nối lại WebSocket
+            A.serve_forever()
 
     def on_close(A, ws, close_status_code, close_msg):
-        Y("WebSocket closed: %s - %s" % (close_status_code, close_msg))
+        Y(f"WebSocket closed: {close_status_code} - {close_msg}")
 
-    # Hàm serve_forever giữ nguyên
     def serve_forever(A):
-        f.enableTrace(l)
         ws_url = f"ws://{A._pool_host}:{A._pool_port}"
         A._ws = f.WebSocketApp(
             ws_url,
@@ -204,10 +198,10 @@ class z:
             on_error=A.on_error,
             on_close=A.on_close,
         )
-        Y("Connecting to WebSocket at %s" % ws_url)  # Thêm log kết nối
+        Y(f"Connecting to WebSocket at {ws_url}")
         A._console_log(0, 0)
         A._ws.run_forever()
-        
+
 if __name__ == '__main__':
     E = r('dataset.txt')
     N = S.argv[1] if M(S.argv) > 1 else B
