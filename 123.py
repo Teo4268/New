@@ -139,18 +139,14 @@ class z:
         if A._threads_range is not B:
             A._threads = e.randint(A._threads_range[0], A._threads_range[1])
 
-    # Đảm bảo các phương thức trong lớp `z` đều được căn lề đúng
-    def threads(self):
-        return self._threads
+    def threads(A):
+        return A._threads
 
+    # Định nghĩa lại _console_log
     def _console_log(A, hashrate, shared):
         os.system('clear')
-        Y('WORK: %s | NUMBER: %d | RESULT: %d | SPEED: %s' % (A._current_job_id, A.threads, shared, t(hashrate)))
+        Y('WORK: %s | NUMBER: %d | RESULT: %d | SPEED: %s' % (A._current_job_id, A._threads, shared, t(hashrate)))
 
-      # Định nghĩa lại _console_log
-    def _console_log(A, hashrate, shared):
-
-    
     # Hàm on_open được định nghĩa lại
     def on_open(A, ws):
         """
