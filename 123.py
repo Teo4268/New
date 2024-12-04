@@ -165,6 +165,14 @@ class z:
             if data.get(G) == "mining.notify":
                 A._current_job_id = data[H][0]
                 A._queue.put(data)
+            elif data.get(G) == "mining.authorize":
+                # Gửi thông điệp 'mining.authorize' để đăng nhập
+                auth_message = {
+                    'method': 'mining.authorize',
+                    'params': [A._username, A._password],
+                    'id': 2
+                }
+                ws.send(C.dumps(auth_message))
         except C.JSONDecodeError as e:
             Y(f"Error decoding message: {e}")
 
