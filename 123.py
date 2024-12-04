@@ -115,7 +115,6 @@ y = {T: w}
 
 
 class z:
-    # Các hàm khởi tạo và thuộc tính vẫn giữ nguyên
     def __init__(A, pool_host, pool_port, username, password, threads=4, algorithm=T):
         C = threads
         A._pool_host = pool_host
@@ -136,18 +135,22 @@ class z:
         A._hashrates = []
         A._current_job_id = 'N/A'
 
-      # Định nghĩa lại _console_log
-    def _console_log(A, hashrate, shared):
-        
-        @property
-    def threads(self):  
+    def _set_threads(A):
+        if A._threads_range is not B:
+            A._threads = e.randint(A._threads_range[0], A._threads_range[1])
+
+    # Đảm bảo các phương thức trong lớp `z` đều được căn lề đúng
+    def threads(self):
         return self._threads
 
-        """
-        Hiển thị thông tin khai thác trên console.
-        """
-        os.system('clear')  # Xóa màn hình console
+    def _console_log(A, hashrate, shared):
+        os.system('clear')
         Y('WORK: %s | NUMBER: %d | RESULT: %d | SPEED: %s' % (A._current_job_id, A.threads, shared, t(hashrate)))
+
+      # Định nghĩa lại _console_log
+    def _console_log(A, hashrate, shared):
+
+    
     # Hàm on_open được định nghĩa lại
     def on_open(A, ws):
         """
