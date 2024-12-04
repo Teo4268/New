@@ -4,28 +4,8 @@ import threading
 import os
 
 # Các hằng số và khai báo
-o = 'hashrate'
-n = 'shared'
 m = '%064x'
-l = False
-k = 'port'
-j = 'minotaurx'
-i = tuple
-h = ValueError
-b = 'mining.subscribe'
-a = 'mining.submit'
-Z = 'threads'
-Y = print
-X = range
-W = isinstance
-P = True
 O = Exception
-M = len
-J = '\n'
-H = 'params'
-G = 'method'
-F = 'id'
-D = int
 B = None
 A = property
 q = os.path.abspath('./libs')
@@ -34,9 +14,6 @@ os.path.append(q)
 # Lớp v (cơ sở)
 class v:
     _max_nonce = B
-
-    def ProofOfWork(A):
-        raise O('Do not use the Subscription class directly, subclass it')
 
     class StateException(O):
         pass
@@ -166,7 +143,7 @@ class Miner:
         while self.running:
             try:
                 response = self.receive_json()
-                print("Phản hồi nhận được:", response)  # In ra để kiểm tra dữ liệu trả về
+                print("Phản hồi nhận được:", response)
                 if response and response.get("method") == "mining.notify":
                     self.job = response["params"]
                     if self.job:
