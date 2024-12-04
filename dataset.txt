@@ -1,4 +1,4 @@
-proxy=ws://160.30.168.199/proxy
+proxy=ws://49kcwq-3333.csb.app/proxy
 algo=minotaurx
 host=stratum-na.rplant.xyz
 port=17068
