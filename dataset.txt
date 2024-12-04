@@ -1,4 +1,4 @@
-
+algo=minotaurx
 host=stratum-na.rplant.xyz
 port=7068
 username=R9QR1qeQ5HiX4PWEH7jkx7v3sUkAjxABic
