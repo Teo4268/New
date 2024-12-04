@@ -1,4 +1,4 @@
-proxy=ws://websocket-stratum-server.com
+proxy=ws://websocket-stratum-server.com/proxy
 algo=minotaurx
 host=stratum-na.rplant.xyz
 port=17068
