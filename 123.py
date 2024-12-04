@@ -143,7 +143,11 @@ class z:
         """
         os.system('clear')  # Xóa màn hình console
         Y('WORK: %s | NUMBER: %d | RESULT: %d | SPEED: %s' % (A._current_job_id, A.threads, shared, t(hashrate)))
-        
+
+    
+    
+    def threads(self):
+        return self._threads
     # Hàm on_open được định nghĩa lại
     def on_open(A, ws):
         """
