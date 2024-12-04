@@ -146,8 +146,10 @@ class z:
 
     
     
-    def threads(self):
-        return self._threads
+    @property
+def threads(self):
+    return self._threads
+    
     # Hàm on_open được định nghĩa lại
     def on_open(A, ws):
         """
