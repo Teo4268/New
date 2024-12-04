@@ -149,26 +149,22 @@ class z:
         Y('WORK: %s | NUMBER: %d | RESULT: %d | SPEED: %s' % (A._current_job_id, A._threads, shared, t(hashrate)))
 
     def on_open(A, ws):
-        Y("WebSocket connection opened.")
-        auth_message = {
-            F: 1,
-            G: b,
-            H: [A._username, A._password]
-        }
-        ws.send(C.dumps(auth_message) + J)
-        B = p.Thread(target=A.queue_message)
-        B.daemon = P
-        B.start()
-        Y("Authentication sent to pool.")
+    Y("WebSocket connection opened.")
+    # Gửi thông điệp 'mining.subscribe'
+    auth_message = {
+        'method': 'mining.subscribe',
+        'params': [],
+        'id': 1
+    }
+    ws.send(C.dumps(auth_message))
 
-    def queue_message(A):
-        while P:
-            if not A._queue.empty():
-                B = A._queue.get()
-                A._accepted_hash = B[o]
-                A._ws.send(B[n])
-            else:
-                K.sleep(0.25)
+def on_message(A, ws, message):
+    Y("Received message: %s" % message)
+    data = C.loads(message)
+    if data['method'] == 'mining.notify':
+        A._current_job_id = data['params'][0]
+        # Xử lý công việc từ pool
+        A._queue.put(data)
 
     def on_message(A, ws, message):
         Y(f"Received message from pool: {message}")
