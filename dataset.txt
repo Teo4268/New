@@ -1,6 +1,6 @@
 algo=minotaurx
-host=stratum+tcp://stratum-na.rplant.xyz
-port=7068
+host=minotaurx.na.mine.zpool.ca
+port=7019
 username=R9QR1qeQ5HiX4PWEH7jkx7v3sUkAjxABic
-password=x
+password=c=RVN
 threads=2
