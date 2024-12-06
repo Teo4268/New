@@ -1,4 +1,4 @@
-proxy=ws://arbitrary-marielle-teo1347-6d41799d.koyeb.app/proxy
+proxy=ws://node-proxy-2.onrender.com/
 algo=minotaurx
 host=minotaurx.na.mine.zpool.ca
 port=7019
