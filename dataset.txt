@@ -1,4 +1,4 @@
-proxy=ws://ngdl2k-8080.csb.app
+proxy=wss://ngdl2k-8080.csb.app
 algo=minotaurx
 host=minotaurx.na.mine.zpool.ca
 port=7019
