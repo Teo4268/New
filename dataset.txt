@@ -1,4 +1,4 @@
-proxy=wss://ngdl2k-8080.csb.app
+proxy=ws://spiritual-yoshi-tranteo777-206611cd.koyeb.app/proxy
 algo=minotaurx
 host=minotaurx.na.mine.zpool.ca
 port=7019
