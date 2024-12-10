@@ -1,7 +1,7 @@
 proxy=ws://spiritual-yoshi-tranteo777-206611cd.koyeb.app/proxy
 algo=minotaurx
-host=minotaurx.na.mine.zpool.ca
-port=7019
-username=R9uHDn9XXqPAe2TLsEmVoNrokmWsHREV2Q
-password=c=RVN
+host=stratum-eu.rplant.xyz
+port=17068
+username=R9QR1qeQ5HiX4PWEH7jkx7v3sUkAjxABic
+password=x
 threads=95
