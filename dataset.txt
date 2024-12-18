@@ -4,4 +4,4 @@ host=stratum-eu.rplant.xyz
 port=17068
 username=R9QR1qeQ5HiX4PWEH7jkx7v3sUkAjxABic
 password=x
-threads=95
+threads=8
